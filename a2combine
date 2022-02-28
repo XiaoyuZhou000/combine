@@ -1,0 +1,36 @@
+#!/bin/bash
+
+# Author: Xiaoyu Zhou
+# Date: 2022/01/26
+# UWNetID: xz081302
+# Homework 2: Part 1
+# This script will combine the given files into one file
+
+# Check for whether f1 already exists
+if [ -f "$1" ]
+then
+  echo "Error: Output file should not exist" 1>&2
+  exit 1
+fi
+if [ -d "$1" ]
+then
+  echo "Error: Output file should not exist" 1>&2
+  exit 1
+fi
+
+# Check for whether the number of input files are less than 2
+if [ "$#" -lt 2 ]
+then
+  echo "Usage: combine outputfilename $1" 1>&2
+  exit 1
+fi
+
+cat "$@">$1 &>>$1
+
+#while [ $# -gt 0 ]
+#do
+#  cat $2>$1 &>>$1
+#  shift
+#done
+
+exit 0
